@@ -17,8 +17,8 @@ describe AI do
       @ai.find_best_move(board, 'X', 'O').should == 7
     end
 
-    it 'blocks the doubble set up' do 
-      board.spaces = [nil] * 9 
+    it 'blocks the doubble set up' do
+      board.spaces = [nil] * 9
       board.spaces[0] = 'O'
       board.spaces[4] = 'X'
       board.spaces[8] = 'X'
@@ -74,9 +74,9 @@ describe AI do
       acceptable_moves.should include(move)
     end
 
-    it 'chooses a corner or center as opening move' do 
+    it 'chooses a corner or center as opening move' do
       board.spaces = [nil] * 9
-      move = @ai.find_best_move(board)
+      move = @ai.find_best_move(board, 'X', 'O')
 
       move.should be_even
     end

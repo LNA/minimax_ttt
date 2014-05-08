@@ -2,7 +2,7 @@ class Board
   attr_accessor :spaces, :open_spaces, :fill
 
   def initialize
-    @spaces = [nil]*9
+    @spaces = [nil] * 9
   end
 
   def fill(move, game_piece)
@@ -11,5 +11,9 @@ class Board
 
   def open_spaces
    open_spaces =  @spaces.size.times.select {|i| @spaces[i] == nil}
+  end
+
+  def reset
+    @spaces = [nil] * 9
   end
 end
