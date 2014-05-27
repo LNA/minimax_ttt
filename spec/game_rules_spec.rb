@@ -69,8 +69,8 @@ describe GameRules do
       game_rules.game_over?(board.spaces).should == true
     end
 
-    it "returns false if the game is not over" do       
-      game_rules.winner(board.spaces).should == false
+    it "returns false if the game is not over" do      
+      game_rules.game_over?(board.spaces).should == false
     end
   end
 
