@@ -12,6 +12,7 @@ class AI
     possible_moves = {}
     current_player = game_piece
     depth = 1
+
     board.open_spaces.each do |move|
       cloned_board = board.clone
       make_move(cloned_board, move, current_player)
