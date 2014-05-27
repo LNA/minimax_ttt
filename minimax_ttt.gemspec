@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'minimax_ttt'
-  s.version     = '0.0.6'
+  s.version     = '0.0.7'
   s.date        = '2014-05-27'
   s.summary     = "A gem for tic tac toe in Ruby."
   s.description = "Plugs into Rails, Sinatra and Command Line games."
