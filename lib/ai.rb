@@ -13,7 +13,7 @@ class AI
     current_player = game_piece
     depth = 1
 
-    if board.spaces.count(nil) == 8 && board.spaces[4] == nil
+    if opponent_made_first_move?(board) && center_space_is_taken?(board)
       return 4 
     end
 
@@ -32,6 +32,13 @@ class AI
   end
 
 private
+  def opponent_made_first_move?(board)
+    board.spaces.count(nil) == 8
+  end
+
+  def center_space_is_taken?(board)
+    board.spaces[4] == nil
+  end
 
   def score_available_moves(board, depth, current_player, score, opponent_piece, game_piece)
     return score if @game_rules.game_over?(board.spaces)
