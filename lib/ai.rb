@@ -13,7 +13,7 @@ class AI
     current_player = game_piece
     depth = 1
 
-    return 4 if opponent_made_first_move?(board) && center_space_is_taken?(board)
+    return 4 if empty?(board) 
     
     board.open_spaces.each do |move|
       cloned_board = board.clone
@@ -30,12 +30,8 @@ class AI
   end
 
 private
-  def opponent_made_first_move?(board)
-    board.spaces.count(nil) == 8
-  end
-
-  def center_space_is_taken?(board)
-    board.spaces[4] == nil
+  def empty?(board)
+    board.spaces.count(nil) == 9
   end
 
   def score_available_moves(board, depth, current_player, score, opponent_piece, game_piece)

@@ -12,7 +12,7 @@ describe AI do
     it 'playes 0 if the board is empty' do 
       board.spaces = [nil] * 9
 
-      @ai.find_best_move(board, 'X', 'O').should == 0
+      @ai.find_best_move(board, 'X', 'O').should == 4
     end
 
     it 'plays 0 if the opponents first move was the center space' do 
@@ -20,13 +20,6 @@ describe AI do
       board.spaces[4] = 'X'
 
       @ai.find_best_move(board, 'X', 'O').should == 0 
-    end
-
-    it 'plays 4 if the opponents first move was 0' do 
-      board.spaces    = [nil] * 9
-      board.spaces[0] = 'X'
-
-      @ai.find_best_move(board, 'X', 'O').should == 4
     end
   end
 
