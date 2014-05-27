@@ -69,8 +69,15 @@ describe GameRules do
       game_rules.game_over?(board.spaces).should == true
     end
 
-    it "returns false if the game is not over" do      
+    it "returns false if the game is not over" do  
+      board.spaces = [nil] * 9
+          
       game_rules.game_over?(board.spaces).should == false
+    end
+
+    it "returns true if there is a winner" do 
+      board.spaces = ["X"] * 9 
+      game_rules.game_over?(board.spaces).should == true
     end
   end
 
