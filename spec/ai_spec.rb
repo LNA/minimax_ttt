@@ -95,12 +95,5 @@ describe AI do
       move = @ai.find_best_move(board, 'X', 'O')
       acceptable_moves.should include(move)
     end
-
-    it 'chooses a corner or center as opening move' do
-      board.spaces = [nil] * 9
-      move = @ai.find_best_move(board, 'X', 'O')
-
-      move.should be_even
-    end
   end
 end
