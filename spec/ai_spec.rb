@@ -8,6 +8,14 @@ describe AI do
     @ai = AI.new(game_rules)
   end
 
+  context 'first move' do 
+    it 'playes 0 if the board is empty' do 
+      board.spaces = [nil] * 9
+
+      @ai.find_best_move(board, 'X', 'O').should == 0
+    end
+  end
+
   context '#find_best_move' do
     it 'plays the last open move' do
       board.spaces = ['X', 'O', 'O',
