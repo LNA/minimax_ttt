@@ -14,6 +14,13 @@ describe AI do
 
       @ai.find_best_move(board, 'X', 'O').should == 0
     end
+
+    it 'plays 0 if the opponents first move was the center space' do 
+      board.spaces    = [nil] * 9
+      board.spaces[4] = 'X'
+
+      @ai.find_best_move(board, 'X', 'O').should == 0 
+    end
   end
 
   context '#find_best_move' do
