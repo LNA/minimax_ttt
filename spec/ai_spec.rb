@@ -21,6 +21,13 @@ describe AI do
 
       @ai.find_best_move(board, 'X', 'O').should == 0 
     end
+
+    it 'plays 4 if the opponents first move was 0' do 
+      board.spaces    = [nil] * 9
+      board.spaces[0] = 'X'
+
+      @ai.find_best_move(board, 'X', 'O').should == 4
+    end
   end
 
   context '#find_best_move' do

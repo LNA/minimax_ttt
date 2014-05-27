@@ -13,6 +13,10 @@ class AI
     current_player = game_piece
     depth = 1
 
+    if board.spaces.count(nil) == 8 && board.spaces[4] == nil
+      return 4 
+    end
+
     board.open_spaces.each do |move|
       cloned_board = board.clone
       make_move(cloned_board, move, current_player)
@@ -28,6 +32,7 @@ class AI
   end
 
 private
+
   def score_available_moves(board, depth, current_player, score, opponent_piece, game_piece)
     return score if @game_rules.game_over?(board.spaces)
     board.open_spaces.each do |move|
