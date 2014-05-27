@@ -13,10 +13,8 @@ class AI
     current_player = game_piece
     depth = 1
 
-    if opponent_made_first_move?(board) && center_space_is_taken?(board)
-      return 4 
-    end
-
+    return 4 if opponent_made_first_move?(board) && center_space_is_taken?(board)
+    
     board.open_spaces.each do |move|
       cloned_board = board.clone
       make_move(cloned_board, move, current_player)
