@@ -15,10 +15,10 @@ class AI
 
     return 4 if empty?(board) 
     
-    board.open_spaces.each do |move|
+    open_spaces_on(board).each do |move|
       cloned_board = board.clone
       make_move(cloned_board, move, current_player)
-      score = rank(cloned_board.spaces, depth, opponent_piece, game_piece)
+      score = rank(cloned_board, depth, opponent_piece, game_piece)
       track_best(move, score, possible_moves)
       new_score = score_available_moves(board, depth + 1, next_player(current_player, opponent_piece, game_piece), score, opponent_piece, game_piece)
       if new_score > score
@@ -29,14 +29,19 @@ class AI
     best_move(possible_moves)
   end
 
-private
+  def open_spaces_on(board)
+    board.size.times.select {|i| board[i] == nil}
+  end
+
+  private
+
   def empty?(board)
-    board.spaces.count(nil) == 9
+    board.count(nil) == 9
   end
 
   def score_available_moves(board, depth, current_player, score, opponent_piece, game_piece)
-    return score if @game_rules.game_over?(board.spaces)
-    board.open_spaces.each do |move|
+    return score if @game_rules.game_over?(board)
+    open_spaces_on(board).each do |move|
       make_move(board, move, current_player)
       if current_player == opponent_piece
         score = score_available_moves(board, depth + 1, next_player(current_player, opponent_piece, game_piece), score, opponent_piece, game_piece) * -1
@@ -62,12 +67,12 @@ private
   end
 
   def reset(board, move)
-    board.spaces[move] = nil
+    board[move] = nil
     board
   end
 
   def make_move(board, move, current_player)
-    board.spaces[move] = current_player
+    board[move] = current_player
     board
   end
 

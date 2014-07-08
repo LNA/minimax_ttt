@@ -1,7 +1,7 @@
 class GameRules
   attr_accessor :current_player
-  def valid?(move, board)
-    board.spaces[move.to_i] == nil && move.to_i < 9
+  def valid?(board, move)
+    board[move.to_i] == nil && move.to_i < 9
   end
 
   def full?(board)

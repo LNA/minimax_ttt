@@ -9,10 +9,6 @@ class Board
     @spaces[move.to_i] = game_piece
   end
 
-  def open_spaces
-   open_spaces =  @spaces.size.times.select {|i| @spaces[i] == nil}
-  end
-
   def reset
     @spaces = [nil] * 9
   end
