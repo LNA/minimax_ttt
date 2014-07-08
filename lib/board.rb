@@ -5,8 +5,8 @@ class Board
     @spaces = [nil] * 9
   end
 
-  def fill(move, game_piece)
-    @spaces[move.to_i] = game_piece
+  def fill(board, move, mark)
+    board[move.to_i] = mark
   end
 
   def reset
